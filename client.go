@@ -1500,9 +1500,10 @@ func (c *Client) PerformRequest(ctx context.Context, opt PerformRequestOptions) 
 	}
 
 	duration := time.Now().UTC().Sub(start)
-	c.infof("%s %s [status:%d, request:%.3fs]",
+	c.infof("%s %s %v[status:%d, request:%.3fs]",
 		strings.ToUpper(opt.Method),
 		req.URL.Redacted(),
+		opt.Body,
 		resp.StatusCode,
 		float64(int64(duration/time.Millisecond))/1000)
 
